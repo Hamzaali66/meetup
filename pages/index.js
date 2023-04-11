@@ -17,14 +17,29 @@ const DUMMY_MEETUPS = [
     description: "this is a second meetup"
   }
 ]
-export default function HomePage() {
-  const {loadedMeetups, setLoadedMeetups} = useState()
+export default function HomePage(props) {
 
-  useEffect(()=>{
-    //send the http req and fetch the data
-    // setLoadedMeetups()
-  },[])
   return (
-      <MeetupList meetups={DUMMY_MEETUPS} />
+    <MeetupList meetups={props.meetups} />
   )
+}
+
+// export async function getServerSideProps(context) {
+//   const req = context.req
+//   const res = context.res
+
+//   return {
+//     props: {
+//       meetups: DUMMY_MEETUPS
+//     }
+//   }
+// }
+
+export async function getStaticProps() {
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS
+    },
+    revalidate: 1
+  }
 }
