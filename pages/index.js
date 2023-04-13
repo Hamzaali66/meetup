@@ -66,6 +66,6 @@ export async function getStaticProps() {
 
       }))
     },
-    revalidate: 1
+    // revalidate: 1    // it will revalidate after 1 second
   }
 }
