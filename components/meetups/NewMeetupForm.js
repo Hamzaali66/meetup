@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import Card from '../ui/Card';
 import classes from './NewMeetupForm.module.css';
@@ -26,6 +26,7 @@ function NewMeetupForm(props) {
 
     props.onAddMeetup(meetupData);
   }
+
 
   return (
     <Card>
