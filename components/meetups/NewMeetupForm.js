@@ -2,12 +2,14 @@ import { useRef, useState } from 'react';
 
 import Card from '../ui/Card';
 import classes from './NewMeetupForm.module.css';
+import Link from 'next/link';
 
 function NewMeetupForm(props) {
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
   const descriptionInputRef = useRef();
+  const [disabled, setDisabled] = useState(false);
 
   function submitHandler(event) {
     event.preventDefault();
@@ -25,7 +27,11 @@ function NewMeetupForm(props) {
     };
 
     props.onAddMeetup(meetupData);
+    setDisabled(true)
+    console.log("clicked....")
   }
+  // const handleClick = () => {
+  // }
 
 
   return (
@@ -52,8 +58,16 @@ function NewMeetupForm(props) {
             ref={descriptionInputRef}
           ></textarea>
         </div>
-        <div className={classes.actions}>
-          <button>Add Meetup</button>
+        <div className={disabled ? classes.Btnstyle : classes.actions}>
+          {/* <Link href='/'> */}
+          <button
+            // onClick={handleClick}
+            disabled={disabled}
+          >
+            {/* {disabled ? 'Adding...' : 'Add Meetup'} */}
+            Add Meetup
+          </button>
+          {/* </Link> */}
         </div>
       </form>
     </Card>
